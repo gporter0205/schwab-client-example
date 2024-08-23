@@ -21,7 +21,7 @@ public class SchwabApiClientHandler {
     @Autowired
     private SchwabMarketDataApiClient schwabMarketDataApiClient;
 
-    @Value("${schwab-api.userId}")
+    @Value("${schwab-api.oauth2.userId}")
     private String schwabUserId;
 
     public void init() {
@@ -41,7 +41,7 @@ public class SchwabApiClientHandler {
 
     @GetMapping("/movers/nyse")
     public Flux<Screener> callMovers() {
-        MoversRequest moversRequest = MoversRequest.Builder.moversRequest()
+        MoversRequest moversRequest = MoversRequest.builder()
                 .withIndexSymbol(MoversRequest.IndexSymbol.NYSE)
                 .build();
         return schwabMarketDataApiClient.fetchMoversToFlux(moversRequest);
