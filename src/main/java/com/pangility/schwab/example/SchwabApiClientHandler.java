@@ -16,7 +16,6 @@ import reactor.core.publisher.Mono;
 
 @Service
 @EnableSchwabMarketDataApi
-@SuppressWarnings("unused")
 public class SchwabApiClientHandler {
     @Autowired
     private SchwabMarketDataApiClient schwabMarketDataApiClient;
